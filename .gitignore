@@ -1,0 +1,14 @@
+filepath: .gitignore
+# Dependencies (Abaikan folder instalasi modul)
+node_modules/
+
+# Production (Abaikan folder hasil build lokal)
+dist/
+.astro/
+
+# Logs & Sampah OS
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+Thumbs.db

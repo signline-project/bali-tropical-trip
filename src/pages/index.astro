@@ -1,0 +1,370 @@
+---
+import TourCard from '../components/TourCard.astro';
+
+const navLinks = [
+  { label: 'Destinations', href: '#destinations' },
+  { label: 'Why Us', href: '#why-us' },
+  { label: 'Tours', href: '#tours' },
+  { label: 'Contact', href: '#contact' }
+];
+
+const whyUsData = [
+  { icon: '🗣️', title: 'English-Speaking Drivers', description: 'Friendly, informative, and native Balinese drivers who know every corner.' },
+  { icon: '🗺️', title: 'Flexible Itineraries', description: 'Your pace, your rules. Custom-tailor routes on the fly freely.' },
+  { icon: '💰', title: 'All-Inclusive Pricing', description: 'Fuel, car, driver fees, and tax included. No hidden charges.' },
+  { icon: '🕒', title: '24/7 Support', description: 'Free cancellation and responsive WhatsApp assistance anytime.' }
+];
+
+const destinationsData = [
+  { name: 'Ubud', description: 'The cultural heart of Bali, emerald rice terraces, and sanctuaries.', image: '/images/dest-ubud.webp' },
+  { name: 'Nusa Penida', description: 'Dramatic clifftops, exotic white beaches, and epic viewpoints.', image: '/images/dest-nusapenida.webp' },
+  { name: 'Uluwatu', description: 'Clifftop sea temples, sunset fire dances, and legendary surf spots.', image: '/images/dest-uluwatu.webp' },
+  { name: 'North Bali', description: 'Quiet volcanic ranges, hidden waterfalls, and misty mountain lakes.', image: '/images/dest-northbali.webp' }
+];
+
+const packagesData = [
+  {
+    title: 'Best of Bali Instagram Tour',
+    price: 'US$49',
+    duration: '10-12 hours',
+    notIncluded: 'Entry tickets to attractions',
+    image: '/images/tour-instagram.webp',
+    highlights: ['Lempuyang Temple (Gates of Heaven)', 'Tirta Gangga Water Palace', 'Tegalalang Rice Terrace & Tegenungan Waterfall']
+  },
+  {
+    title: 'Ubud Art & Culture Tour',
+    price: 'US$45',
+    duration: '8-10 hours',
+    image: '/images/tour-ubud-culture.webp',
+    highlights: ['Ubud Monkey Forest & Ubud Palace', 'Tirta Empul Holy Water Temple', 'Tegalalang Rice Terrace & Celuk Silver Village']
+  },
+  {
+    title: 'Nusa Penida One Day Trip',
+    price: 'US$75',
+    duration: '12 hours',
+    image: '/images/tour-nusapenida-day.webp',
+    highlights: ['Fast Boat Return Tickets from Sanur', 'Kelingking Beach Viewpoint & Broken Beach', 'Angel\'s Billabong & Crystal Bay Swimming']
+  },
+  {
+    title: 'Uluwatu Sunset & Dinner Tour',
+    price: 'US$55',
+    duration: '6-8 hours',
+    notIncluded: 'Jimbaran Bay dinner food costs',
+    image: '/images/tour-uluwatu-sunset.webp',
+    highlights: ['Uluwatu Clifftop Temple & Padang-Padang Beach', 'Kecak Fire Dance Performance Ticket Included', 'Jimbaran Bay Seafood Spot Transfer']
+  }
+];
+
+const bestProgramsData = [
+  {
+    title: 'Hidden Gems of East Bali',
+    price: 'US$55',
+    duration: '10-12 hours',
+    notIncluded: 'Entry tickets to attractions',
+    image: '/images/tour-east-bali.webp',
+    highlights: ['Penglipuran Village (Bali\'s cleanest village)', 'Goa Giri Putri Temple Exploration', 'Relaxing at pristine Virgin Beach', 'Taman Sukasada (Karangasem Palace)']
+  },
+  {
+    title: 'North Bali Sunrise & Dolphin Tour',
+    price: 'US$70',
+    duration: '12-14 hours',
+    notIncluded: 'Entry tickets & dolphin boat fees',
+    image: '/images/tour-lovina-dolphin.webp',
+    highlights: ['Lovina Beach Wild Dolphin Watching Boat', 'Banyumala Twin Waterfall Trekking', 'Twin Lakes (Buyan & Tamblingan) Panoramic View', 'Ulun Danu Beratan Lake Temple']
+  },
+  {
+    title: 'Besakih Mother Temple & Rice Terrace',
+    price: 'US$50',
+    duration: '8-10 hours',
+    notIncluded: 'Entry tickets to attractions',
+    image: '/images/tour-besakih-mother.webp',
+    highlights: ['Besakih Temple (The holiest mother temple)', 'Bukit Jambul Scenic Rice Terrace', 'Kerta Gosa Royal Court Pavilion', 'Goa Lawah Ancient Bat Cave Temple']
+  }
+];
+
+const tourActivitiesData = [
+  {
+    title: 'ATV Ride & Waterfall Adventure',
+    price: 'US$85',
+    duration: '4-6 hours',
+    image: '/images/act-atv-adventure.webp',
+    highlights: ['Thrilling ATV Ride through jungle & muddy rice fields', 'Scenic trek and swimming at Tibumana Waterfall', 'Professional ATV guide, helmet, boots, locker & shower included']
+  },
+  {
+    title: 'White Water Rafting at Telaga Waja',
+    price: 'US$75',
+    duration: '6-8 hours',
+    image: '/images/act-rafting-telagawaja.webp',
+    highlights: ['Telaga Waja River rafting (Class 3-4 rapid thrills)', 'Stunning views of high cliffs & pristine mini waterfalls', 'Gourmet buffet lunch, complete safety gears, locker & shower included']
+  },
+  {
+    title: 'Cooking Class at Local Village',
+    price: 'US$45',
+    duration: '5-6 hours',
+    image: '/images/act-cooking-class.webp',
+    highlights: ['Traditional Balinese morning market spice tour', 'Learn to cook 5-6 local dishes (Sate Lilit, Lawar, etc.)', 'Enjoy your own cooked lunch & bring home the authentic recipe book']
+  }
+];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bali Tropical Trip | Private Driver & Curated Tours Bali</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+
+    <style is:inline>
+      :root {
+        --primary: #c5a880;        
+        --secondary: #1e3d36;      
+        --cta: #d4e157;            
+        --cta-hover: #c0ca33;
+        --bg-light: #faf9f6;       
+        --bg-white: #ffffff;
+        --text-dark: #1c2826;
+        --text-muted: #5a6562;
+        --font-main: 'Inter', sans-serif;
+        --transition: all 0.3s ease-in-out;
+        --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        --shadow-hover: 0 10px 30px rgba(0, 0, 0, 0.12);
+        --radius: 12px;
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html { font-family: var(--font-main); background-color: var(--bg-light); color: var(--text-dark); scroll-behavior: smooth; }
+      body { overflow-x: hidden; line-height: 1.6; }
+      img { max-width: 100%; display: block; width: 100%; height: 100%; object-fit: cover; }
+      a { text-decoration: none; color: inherit; }
+      .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+      .section { padding: 80px 0; }
+      .section-title { text-align: center; font-size: 2.5rem; font-weight: 700; color: var(--secondary); margin-bottom: 16px; }
+      .section-subtitle { text-align: center; font-size: 1.1rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 48px auto; }
+      
+      .btn { display: inline-block; padding: 12px 28px; border-radius: 50px; font-weight: 600; text-align: center; transition: var(--transition); cursor: pointer; border: none; }
+      .btn-cta { background-color: var(--cta); color: var(--secondary); }
+      .btn-cta:hover { background-color: var(--cta-hover); transform: translateY(-2px); }
+      .btn-secondary { background-color: var(--secondary); color: var(--bg-white); }
+      .btn-secondary:hover { opacity: 0.9; transform: translateY(-2px); }
+
+      /* Sticky Navbar */
+      .navbar { position: sticky; top: 0; background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); box-shadow: 0 2px 10px rgba(0,0,0,0.05); z-index: 100; }
+      .nav-container { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+      .logo { font-size: 1.5rem; font-weight: 700; color: var(--secondary); }
+      .logo-accent { color: var(--primary); }
+      .nav-menu { display: flex; gap: 32px; align-items: center; }
+      .nav-link { font-weight: 500; color: var(--text-dark); transition: var(--transition); }
+      .nav-link:hover { color: var(--primary); }
+
+      /* Grids */
+      .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; }
+      .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; }
+      .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 48px; align-items: center; }
+      .bg-alt { background-color: #f3f2ec; }
+
+      /* Cards styling */
+      .why-card { background: var(--bg-white); padding: 32px; border-radius: var(--radius); box-shadow: var(--shadow); }
+      .icon-container { background-color: rgba(197, 168, 128, 0.12); width: 60px; height: 60px; border-radius: 50px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; font-size: 1.8rem; }
+      
+      .dest-card { background: var(--bg-white); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); transition: var(--transition); }
+      .dest-img-wrapper { position: relative; height: 240px; overflow: hidden; }
+      .dest-card:hover .dest-img-wrapper img { transform: scale(1.08); }
+      .dest-img-wrapper img { transition: var(--transition); }
+      .dest-content { padding: 24px; }
+
+      .tour-card { background: var(--bg-white); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column; transition: var(--transition); }
+      .tour-img-wrapper { position: relative; height: 220px; }
+      .duration-tag { position: absolute; bottom: 12px; left: 12px; background: rgba(30, 61, 54, 0.85); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; }
+      .tour-content { padding: 24px; display: flex; flex-direction: column; flex-grow: 1; }
+      .price { font-size: 1.6rem; font-weight: 700; color: var(--primary); }
+      .inc-notice { background-color: rgba(212, 225, 87, 0.15); color: #5d6b00; font-size: 0.8rem; padding: 6px 12px; border-radius: 6px; font-weight: 600; margin: 12px 0; }
+      .highlights { list-style: none; margin-bottom: 16px; flex-grow: 1; }
+      .highlights li { font-size: 0.95rem; margin-bottom: 8px; display: flex; gap: 8px; }
+      .not-included { font-size: 0.85rem; color: #c62828; margin-bottom: 16px; }
+      .tour-card .book-btn { width: 100%; text-align: center; margin-top: auto; display: block; }
+
+      /* Hero Section */
+      .hero { position: relative; background-image: url('/images/hero-bali.webp'); background-size: cover; background-position: center; height: 75vh; display: flex; align-items: center; color: white; text-align: center; }
+      .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(30,61,54,0.4), rgba(30,61,54,0.7)); }
+      .hero-content { position: relative; z-index: 10; max-width: 800px; margin: 0 auto; }
+      .hero h1 { font-size: 3.5rem; font-weight: 700; margin-bottom: 20px; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+      .hero p { font-size: 1.4rem; margin-bottom: 32px; }
+
+      /* Social Proof */
+      .social-proof { background-color: var(--secondary); color: var(--bg-light); padding: 20px 0; text-align: center; }
+      .proof-flex { display: flex; justify-content: center; align-items: center; gap: 24px; flex-wrap: wrap; }
+      .stars { color: var(--cta); letter-spacing: 2px; }
+
+      /* Differentiator Section */
+      .diff-image-box { height: 400px; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-hover); }
+      blockquote { border-left: 4px solid var(--primary); padding-left: 16px; font-style: italic; color: var(--secondary); font-weight: 500; margin: 24px 0; }
+
+      /* Footer */
+      .footer { background-color: var(--secondary); color: var(--bg-light); padding: 60px 0 20px 0; }
+      .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
+      .footer h3 { font-size: 1.6rem; color: var(--cta); margin-bottom: 16px; }
+      .footer-links { list-style: none; }
+      .footer-links li { margin-bottom: 10px; }
+      .footer-bottom { text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; font-size: 0.9rem; color: rgba(255,255,255,0.6); }
+
+      /* Floating WhatsApp Button */
+      .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background-color: #25d366; color: white; width: 60px; height: 60px; border-radius: 50px; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 2px 2px 10px rgba(0,0,0,0.2); z-index: 1000; }
+
+      @media (max-width: 768px) {
+        .hero h1 { font-size: 2.3rem; }
+        .section-title { font-size: 2rem; }
+        .nav-menu { display: none; }
+        .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; gap: 20px; }
+        .proof-flex { flex-direction: column; gap: 4px; }
+        .diff-image-box { height: 240px; }
+        .footer { text-align: center; }
+      }
+    </style>
+
+    <header class="navbar">
+      <div class="container nav-container">
+        <a href="#" class="logo"><span class="logo-accent">Bali</span> Tropical Trip</a>
+        <nav class="nav-menu">
+          {navLinks.map(link => (
+            <a href={link.href} class="nav-link">{link.label}</a>
+          ))}
+        </nav>
+        <a href="#tours" class="btn btn-cta">Book a Driver</a>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-overlay"></div>
+      <div class="container hero-content">
+        <h1>Explore Bali Like a Local</h1>
+        <p>Private Driver & Curated Tours — Safe, Flexible, All-Inclusive</p>
+        <a href="#tours" class="btn btn-cta">Book Your Trip</a>
+      </div>
+    </section>
+
+    <section class="social-proof">
+      <div class="container proof-flex">
+        <div class="stars">★★★★★</div>
+        <p>Over <strong>5,000+ 5-Star Reviews</strong> on Google & TripAdvisor</p>
+        <div class="stars">★★★★★</div>
+      </div>
+    </section>
+
+    <section id="why-us" class="section">
+      <div class="container">
+        <h2 class="section-title">Why Travelers Choose Us</h2>
+        <p class="section-subtitle">We remove the stress out of navigating Bali so you can focus entirely on your holiday.</p>
+        <div class="grid-4">
+          {whyUsData.map(item => (
+            <div class="why-card">
+              <div class="icon-container">{item.icon}</div>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="destinations" class="section bg-alt">
+      <div class="container">
+        <h2 class="section-title">Popular Destinations</h2>
+        <p class="section-subtitle">Explore Bali's iconic regional hubs with a dedicated private guide.</p>
+        <div class="grid-4">
+          {destinationsData.map(item => (
+            <div class="dest-card">
+              <div class="dest-img-wrapper"><img src={item.image} alt={item.name} /></div>
+              <div class="dest-content"><h3>{item.name}</h3><p>{item.description}</p></div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container grid-2">
+        <div class="diff-image-box">
+          <img src="/images/tourists-bali.webp" alt="Tourists in Bali" />
+        </div>
+        <div class="diff-text">
+          <h2>The Bali Tropical Trip Difference</h2>
+          <p>We are a 100% locally owned and operated network of certified private drivers. We treat your journey as an authentic exploration, not a commercial route.</p>
+          <blockquote>
+            "Strict no-forced-shopping policy. We only stop at places you actually want to visit."
+          </blockquote>
+          <p>By choosing us, your booking fee directly benefits local families and contributes directly to the sustainable tourism economy of Bali.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="tours" class="section bg-alt">
+      <div class="container">
+        <h2 class="section-title">Best-Selling Private Tours</h2>
+        <p class="section-subtitle">Handcrafted curated packages. Fully customizable variables on request.</p>
+        <div class="grid-2">
+          {packagesData.map(pkg => (
+            <TourCard {...pkg} />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="best-programs" class="section">
+      <div class="container">
+        <h2 class="section-title">Our Best Tour Program</h2>
+        <p class="section-subtitle">Premium curated paths exploring deeper cultural roots and hidden coastal paradises.</p>
+        <div class="grid-3">
+          {bestProgramsData.map(pkg => (
+            <TourCard {...pkg} />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="activities" class="section bg-alt">
+      <div class="container">
+        <h2 class="section-title">More Tour Activities</h2>
+        <p class="section-subtitle">Add unforgettable adrenaline rushes and immersive local experiences to your Bali holiday.</p>
+        <div class="grid-3">
+          {tourActivitiesData.map(act => (
+            <TourCard {...act} isActivity={true} />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <footer id="contact" class="footer">
+      <div class="container footer-grid">
+        <div>
+          <h3>Bali Tropical Trip</h3>
+          <p>Your premium gateway to real, customized Balinese travel experiences.</p>
+        </div>
+        <div>
+          <h4 style="color:var(--primary); margin-bottom:16px;">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="#destinations" style="color:rgba(255,255,255,0.7)">Destinations</a></li>
+            <li><a href="#why-us" style="color:rgba(255,255,255,0.7)">Why Us</a></li>
+            <li><a href="#tours" style="color:rgba(255,255,255,0.7)">Tour Packages</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="color:var(--primary); margin-bottom:16px;">Connect</h4>
+          <p style="color:rgba(255,255,255,0.7)">WhatsApp: +62 878 8504 6608</p>
+          <p style="color:rgba(255,255,255,0.7)">Email: booking@balitropicaltrip.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Bali Tropical Trip. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <a href="https://wa.me/6287885046608" class="whatsapp-float" target="_blank" aria-label="Contact us on WhatsApp">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.413 9.863-9.83 0-2.628-1.02-5.101-2.871-6.955C16.6 1.967 14.128.95 11.517.95c-5.44 0-9.866 4.415-9.869 9.836-.001 1.73.461 3.42 1.337 4.926l-.995 3.636 3.715-.975zM17.522 14.28c-.324-.162-1.92-.949-2.219-1.057-.299-.108-.517-.162-.734.162-.218.323-.844 1.058-1.036 1.275-.192.217-.384.243-.707.081-.324-.162-1.368-.505-2.606-1.61-1.001-.895-1.676-2.001-1.872-2.325-.196-.324-.021-.499.141-.661.145-.145.324-.379.486-.568.162-.189.216-.324.324-.54.108-.217.054-.405-.027-.568-.081-.162-.734-1.766-1.005-2.414-.265-.63-.53-.545-.726-.554h-.615c-.218 0-.573.081-.871.405-.299.324-1.141 1.116-1.141 2.721s1.168 3.148 1.33 3.364c.162.216 2.3 3.51 5.57 4.921.777.336 1.385.537 1.859.688.78.249 1.49.214 2.05.13.624-.093 1.92-.784 2.191-1.514.272-.73.272-1.357.19-1.486-.082-.13-.298-.216-.622-.379z"/></svg>
+    </a>
+
+  </body>
+</html>

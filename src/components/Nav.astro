@@ -1,0 +1,20 @@
+---
+// Kita terima data links dari halaman utama agar dinamis
+interface Props {
+  title: string;
+  links: { label: string; href: string }[];
+}
+const { title, links } = Astro.props;
+---
+
+<header class="navbar">
+  <div class="container nav-container">
+    <a href="#" class="logo"><span class="logo-accent">Go</span> {title}</a>
+    <nav class="nav-menu">
+      {links.map(link => (
+        <a href={link.href} class="nav-link">{link.label}</a>
+      ))}
+    </nav>
+    <a href="#tours" class="btn btn-cta">Book a Driver</a>
+  </div>
+</header>

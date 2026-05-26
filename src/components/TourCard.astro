@@ -1,0 +1,44 @@
+---
+interface Props {
+  title: string;
+  price: string;
+  duration: string;
+  highlights: string[];
+  image: string;
+  notIncluded?: string;
+  isActivity?: boolean; // Prop tambahan untuk membedakan label paket tur biasa dengan aktivitas petualangan
+}
+
+const { title, price, duration, highlights, image, notIncluded, isActivity = false } = Astro.props;
+---
+<div class="tour-card">
+  <div class="tour-img-wrapper">
+    <img src={image} alt={title} loading="lazy" />
+    <span class="duration-tag">⏱ {duration}</span>
+  </div>
+  <div class="tour-content">
+    <div>
+      <span class="price">{price}</span>
+      <span style="font-size:0.85rem; color:var(--text-muted);">/ person (min 2)</span>
+    </div>
+    <h3 style="margin:8px 0;">{title}</h3>
+    
+    <div class="inc-notice">
+      {isActivity 
+        ? "✓ Includes Private Car, Driver, Fuel & All Safety Equipments" 
+        : "✓ Includes Private Car, Driver, Fuel & Mineral Water"}
+    </div>
+
+    <ul class="highlights">
+      {highlights.map(item => (
+        <li><span>📍</span> {item}</li>
+      ))}
+    </ul>
+
+    {notIncluded && (
+      <p class="not-included">⚠️ <em>Excludes: {notIncluded}</em></p>
+    )}
+
+    <a href={`https://wa.me/628123456789?text=Hi%20GoBaliDriver,%20I%20want%20to%20book%20${encodeURIComponent(title)}`} class="btn btn-cta book-btn" target="_blank">Book Now</a>
+  </div>
+</div>
