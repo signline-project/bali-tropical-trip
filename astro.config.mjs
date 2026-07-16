@@ -1,13 +1,11 @@
 import { defineConfig } from 'astro/config';
-
 import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  // Ganti 'username' dengan username GitHub Anda
-  // Ganti 'bali-tropical-trip' dengan nama repositori GitHub Anda nanti
-  site: 'https://signline-project.github.io',
+  // Menggunakan domain premium Anda yang baru
+  site: 'https://balitripology.com',
 
-  base: '/bali-tropical-trip',
+  // Baris base DIHAPUS karena website sekarang berada di akar utama domain murni (.com)
   integrations: [sitemap()],
 });
