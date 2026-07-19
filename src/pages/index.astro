@@ -24,34 +24,58 @@ const destinationsData = [
 
 const packagesData = [
   {
+    title: '3-Day Bali to East Java Overland: Magical Mount Bromo & Mystical Ijen Crater',
+    price: 'US$307 / pax (min 2 pax)',
+    duration: '3 Days / 2 Nights',
+    isActivity: true, // Untuk penanda aktivitas fisik intensif di Ijen
+    image: '/images/tour-bromo-ijen.webp', // Silakan siapkan aset gambar bromo/ijen format .webp nanti
+    highlights: [
+      'Spectacular Sunrise & Volcanic Crater Views at Mount Bromo',
+      'Private Bali to East Java Bromo - Ijen Crater Overland Tour',
+      'Comfortable Private AC Car / Minibus Transportation (Fuel & Parking Included)',
+      '2 Nights Accommodations (1 Night Bromo & 1 Night Ijen / 1 Room for 2 People)',
+      'All Entrance Fees to Bromo and Ijen National Parks Included',
+      'Cross-Island Boat & Ferry Crossing Fees from Bali to Java',
+      'Professional English-Speaking Local Adventure Guide',
+      'Complimentary Mineral Water, Parking, & Local Donations'
+    ],
+    notIncluded: 'Lunch & Dinner, Mandatory Ijen Medical Certificate (~USD 3/pax)'
+  },
+  {
     title: 'Best of Bali Instagram Tour',
     price: 'US$49',
     duration: '10-12 hours',
-    notIncluded: 'Entry tickets to attractions',
+    isActivity: false,
     image: '/images/tour-instagram.webp',
-    highlights: ['Lempuyang Temple (Gates of Heaven)', 'Tirta Gangga Water Palace', 'Tegalalang Rice Terrace & Tegenungan Waterfall']
+    highlights: ['Lempuyang Temple (Gates of Heaven)', 'Tirta Gangga Water Palace', 'Tegalalang Rice Terrace & Tegenungan Waterfall'],
+    notIncluded: 'Entry tickets to attractions'
   },
   {
     title: 'Ubud Art & Culture Tour',
     price: 'US$45',
     duration: '8-10 hours',
+    isActivity: false,
     image: '/images/tour-ubud-culture.webp',
-    highlights: ['Ubud Monkey Forest & Ubud Palace', 'Tirta Empul Holy Water Temple', 'Tegalalang Rice Terrace & Celuk Silver Village']
+    highlights: ['Ubud Monkey Forest & Ubud Palace', 'Tirta Empul Holy Water Temple', 'Tegalalang Rice Terrace & Celuk Silver Village'],
+    notIncluded: 'Entry tickets & personal expenses'
   },
   {
     title: 'Nusa Penida One Day Trip',
     price: 'US$75',
     duration: '12 hours',
+    isActivity: false,
     image: '/images/tour-nusapenida-day.webp',
-    highlights: ['Fast Boat Return Tickets from Sanur', 'Kelingking Beach Viewpoint & Broken Beach', 'Angel\'s Billabong & Crystal Bay Swimming']
+    highlights: ['Fast Boat Return Tickets from Sanur', 'Kelingking Beach Viewpoint & Broken Beach', 'Angel\'s Billabong & Crystal Bay Swimming'],
+    notIncluded: 'Lunch & personal expenses'
   },
   {
     title: 'Uluwatu Sunset & Dinner Tour',
     price: 'US$55',
     duration: '6-8 hours',
-    notIncluded: 'Jimbaran Bay dinner food costs',
+    isActivity: false,
     image: '/images/tour-uluwatu-sunset.webp',
-    highlights: ['Uluwatu Clifftop Temple & Padang-Padang Beach', 'Kecak Fire Dance Performance Ticket Included', 'Jimbaran Bay Seafood Spot Transfer']
+    highlights: ['Uluwatu Clifftop Temple & Padang-Padang Beach', 'Kecak Fire Dance Performance Ticket Included', 'Jimbaran Bay Seafood Spot Transfer'],
+    notIncluded: 'Jimbaran Bay dinner food costs'
   }
 ];
 
